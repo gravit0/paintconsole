@@ -3,14 +3,14 @@
 #include <cmath>
 
 const char null_char = ' ';
-const char hline_char = '_';
+const char hline_char = '-';
 const char vline_char = '|';
 
 typedef char matrix_type;
 matrix_type* matrix;
 int mPosX=0,mPosY=0; //Размеры матрицы
 double zPosX=0,zPosY=0; //Выбранная позиция
-const int size_kvadrat = 10;
+int size_kvadrat = 2;
 bool setPixel(double x,double y,matrix_type t)
 {
     if(zPosX > x || ( zPosX + mPosX) < x) return false;
@@ -42,11 +42,20 @@ int main()
 {
     
     //Создание
+    try {
     std::cout << "Размер матрицы(x y): ";
     std::cin >> mPosX >> mPosY;
     std::cout << "Текущая позиция(x y): ";
     std::cin >> zPosX >> zPosY;
+    std::cout << "Размер квадрата: ";
+    std::cin >> size_kvadrat;
     matrix = new matrix_type[(mPosX+1)*(mPosY+1)];
+    }
+    catch(std::exception e)
+    {
+        std::cout << e.what();
+        return 1;
+    }
     //Заполнение
     for(int i=0;i<mPosY;i++)
     for(int j=0;j<mPosX;j++)
