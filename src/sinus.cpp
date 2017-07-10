@@ -1,6 +1,8 @@
 #include <iostream>
 #define _USE_MATH_DEFINES
 #include <cmath>
+#include "sinus.hpp"
+namespace Sinus {
 double X_EXPANDING = 4.0;
 int posX=0,posY=0;
 int func(double arg)
@@ -36,7 +38,7 @@ void drawLine(int x1,int y1,int x2,int y2,char t)
         matrix[a*posX+i] = t;
     }
 }
-int main()
+int run(int argc,char** argv)
 {
     std::cout << "Размер матрицы: ";
     std::cin >> posX >> posY;
@@ -69,4 +71,5 @@ int main()
     }
     delete[] matrix;
     return 0;
+}
 }

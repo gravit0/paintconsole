@@ -1,7 +1,8 @@
 #include <iostream>
 #define _USE_MATH_DEFINES
 #include <cmath>
-
+#include "kvadrat.hpp"
+namespace Kvadrat {
 const char null_char = ' ';
 const char hline_char = '-';
 const char vline_char = '|';
@@ -38,7 +39,7 @@ void renderKvadrat(int x,int y,int size)
         setPixel(i+zPosX,y+zPosY+size,hline_char);
     }
 }
-int main()
+int run(int argc,char** argv)
 {
     
     //Создание
@@ -83,4 +84,5 @@ int main()
     }
     delete[] matrix;
     return 0;
+}
 }
