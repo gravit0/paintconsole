@@ -2,6 +2,9 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include "sinus.hpp"
+#ifndef M_PI
+#define M_PI 3.14
+#endif
 namespace Sinus {
 double X_EXPANDING = 4.0;
 int posX=0,posY=0;

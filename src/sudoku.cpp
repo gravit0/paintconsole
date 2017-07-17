@@ -55,7 +55,47 @@ int run(int argc,char** argv)
         SudokuMatrix matrix(posX,posY,stdmatr);
         matrix.print();
         std::cout << std::endl;
-        matrix.swapStolb(0,0,1);
+		srand(time(0));
+		auto lam_stolb = [&]() {
+			int rand_1 = rand() % 3;
+			int rand_2 = rand() % 3;
+			int rand_3 = rand() % 2;
+			int pos = 0;
+			if(rand_2 == 0 && rand_3 == 0) pos = 1;
+			else if(rand_2 == 0 && rand_3 == 1) pos = 2;
+			if(rand_2 == 1 && rand_3 == 0) pos = 0;
+			if(rand_2 == 1 && rand_3 == 1) pos = 2;
+			if(rand_2 == 2 && rand_3 == 0) pos = 0;
+			if(rand_2 == 2 && rand_3 == 1) pos = 1;
+			//std::cout << rand_1 << std::endl;
+			matrix.swapStolb(rand_1,rand_2,pos);
+		};
+		auto lam_line = [&]() {
+			int rand_1 = rand() % 3;
+			int rand_2 = rand() % 3;
+			int rand_3 = rand() % 2;
+			int pos = 0;
+			if(rand_2 == 0 && rand_3 == 0) pos = 1;
+			else if(rand_2 == 0 && rand_3 == 1) pos = 2;
+			else if(rand_2 == 1 && rand_3 == 0) pos = 0;
+			else if(rand_2 == 1 && rand_3 == 1) pos = 2;
+			else if(rand_2 == 2 && rand_3 == 0) pos = 0;
+			else if(rand_2 == 2 && rand_3 == 1) pos = 1;
+			//std::cout << rand_1 << std::endl;
+			matrix.swapLine(rand_1,rand_2,pos);
+		};
+		for(int i=0;i<128;i++) {
+			int rand_4 = rand() % 2;
+			if(rand_4 == 0) lam_stolb();
+			else lam_line();
+		}
+        matrix.print();
+		std::cout << std::endl;
+		for(int i=0;i<32;i++) {
+			int rand_1 = rand() % 81;
+			//std::cout << rand_1 << std::endl;
+			matrix.mat[rand_1] = ' ';
+		}
         matrix.print();
     }
     catch(std::exception e)
